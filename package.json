@@ -1,0 +1,40 @@
+{
+  "name": "em-sdk-js",
+  "version": "1.0.0",
+  "description": "The official EngageMinds JavaScript browser client sdk",
+  "license": "MIT",
+  "main": "./dist/em-sdk.min.js",
+  "module": "./dist/em-sdk.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/em-sdk.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/em-sdk.min.js"
+      },
+      "default": "./dist/em-sdk.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run build:types && webpack build -c webpack.js --mode production",
+    "build:types": "node scripts/build-types.js",
+    "typecheck": "tsc --noEmit",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/ua-parser-js": "^0.7.39",
+    "ts-loader": "^9.6.2",
+    "typescript": "^5.9.3",
+    "ua-parser-js": "^1.0.35",
+    "webpack": "^5.82.1",
+    "webpack-cli": "^5.1.1"
+  }
+}
